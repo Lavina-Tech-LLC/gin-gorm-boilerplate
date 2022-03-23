@@ -1,0 +1,11 @@
+[configDB]
+    host            = "localhost"
+    port            = 5432
+    user            = "lvntools"
+    password        = "123456"
+    dbname          = "lvn-tools"
+
+[server]
+    addr            = "localhost:9000"
+    cert = ""
+    key = ""

@@ -8,8 +8,30 @@
             "remotePath": "",
             "env": {},
             "showLog": true,
-            "program": "H:/ReactProjects/lvn-tools/main.go",
-            "args": ["-importPath", "H:/ReactProjects/lvn-tools/"]
+            "program": "H:/ReactProjects/lvn-tools/cmd/app/main.go",
+            "args": ["-m","dev","-conf","../../configs"]
+        },
+
+        {
+            "name": "Migrate",
+            "type": "go",
+            "request": "launch",
+            "remotePath": "",
+            "env": {},
+            "showLog": true,
+            "program": "H:/ReactProjects/lvn-tools/cmd/app/main.go",
+            "args": ["-m","dev","-act", "migrate", "-conf","../../configs"]
+        },
+
+        {
+            "name": "Casbin",
+            "type": "go",
+            "request": "launch",
+            "remotePath": "",
+            "env": {},
+            "showLog": true,
+            "program": "H:/ReactProjects/lvn-tools/cmd/app/main.go",
+            "args": ["-m","dev","-act", "updatePolicies", "-conf","../../configs"]
         }
     ]
 }

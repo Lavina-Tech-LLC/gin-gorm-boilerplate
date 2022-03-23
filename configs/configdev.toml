@@ -1,0 +1,12 @@
+[configDB]
+    host            = "localhost"
+    port            = 5432
+    user            = "db-user"
+    password        = "123456"
+    dbname          = "test-db"
+
+[server]
+    addr            = "localhost:9000"
+
+[options]
+    debugMessages          = true

@@ -1,15 +1,13 @@
 package models
 
-import (
-	"lvn-tools/configs"
-)
+import "gin-gorm-boilerplate/internal/dbCon"
 
 type (
 	LogsModels struct{}
 )
 
 func (log *Logs) Log() error {
-	db := configs.GetDB
+	db := dbCon.GetDB
 	err := db.Create(&log).Error
 	return err
 }

@@ -30,10 +30,7 @@ func Main() {
 	dbCon.RunMode = *runMode
 	dbCon.ConfigPath = *configPath
 
-	// Starting viper
-	dbCon.StartViper()
-
-	// connecting to db
+	// connecting to dbs
 	dbCon.Connect()
 
 	switch *action {
@@ -47,7 +44,7 @@ func Main() {
 
 }
 
-func startApp(){
+func startApp() {
 
 	// Set the router as the default one provided by Gin
 	router = gin.Default()
@@ -67,7 +64,7 @@ func startApp(){
 
 	// Start serving the application
 	//router.Run()
- 
+
 	srv := &http.Server{
 		Addr:    viper.GetString("server.addr"),
 		Handler: router,
@@ -76,10 +73,10 @@ func startApp(){
 
 	go func() {
 		var err error
-		if viper.GetString("server.cert")==""||viper.GetString("server.key")=="" {
+		if viper.GetString("server.cert") == "" || viper.GetString("server.key") == "" {
 			err = srv.ListenAndServe()
-		} else{
-			err = srv.ListenAndServeTLS(viper.GetString("server.cert"),viper.GetString("server.key"))
+		} else {
+			err = srv.ListenAndServeTLS(viper.GetString("server.cert"), viper.GetString("server.key"))
 		}
 		// service connections
 		if err != nil && err != http.ErrServerClosed {

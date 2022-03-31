@@ -8,8 +8,8 @@ import (
 )
 
 // running go run internal/dbCon/migrations/migrate.go
-func Main() {	
-	dbCon.ConnectPG()
+func Main() {
+	dbCon.Connect()
 	dbCon.GetDB.AutoMigrate(&models.Logs{})
 	dbCon.GetDB.AutoMigrate(&models.Users{})
 	llog.Info("Success")

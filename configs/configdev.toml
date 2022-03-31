@@ -1,12 +1,15 @@
 [configDB]
     host            = "localhost"
     port            = 5432
-    user            = "db-user"
-    password        = "123456"
-    dbname          = "test-db"
+    user            = "my user"
+    password        = "my strong password"
+    dbname          = "my awsome db"
 
 [server]
     addr            = "localhost:9000"
+    cert = ""
+    key = ""
+
 
 [options]
     debugMessages          = true

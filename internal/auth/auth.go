@@ -17,6 +17,7 @@ import (
 
 var (
 	noAuthResourses = []string{
+		"/",
 		"/network/ip",
 	}
 )
@@ -63,10 +64,10 @@ func AuthenticateUser(c *gin.Context) {
 
 	sign := md5.Sum([]byte(signStr))
 	if dbCon.Dm {
-		llog.Info("Signing string is: "+signStr)
-		llog.Info("Generated: "+hex.EncodeToString(sign[:]))
-		llog.Info("Recieved: "+strings.ToLower(c.Request.Header.Get("s")))
-	} 
+		llog.Info("Signing string is: " + signStr)
+		llog.Info("Generated: " + hex.EncodeToString(sign[:]))
+		llog.Info("Recieved: " + strings.ToLower(c.Request.Header.Get("s")))
+	}
 
 	if strings.ToLower(c.Request.Header.Get("s")) != hex.EncodeToString(sign[:]) {
 		c.JSON(401, lavina.Response("", "Bad credentials", false))

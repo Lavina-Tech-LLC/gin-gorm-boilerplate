@@ -8,7 +8,7 @@ type (
 
 func (usr *Users) GetUserByKey() error {
 
-	res := dbCon.GetDB.First(&usr).Where("key = ?", usr.Key)
+	res := dbCon.DB.First(&usr).Where("key = ?", usr.Key)
 
 	return res.Error
 }

@@ -34,7 +34,7 @@ func AuthenticateUser(c *gin.Context) {
 	usr.Key = c.Request.Header.Get("k")
 	err := usr.GetUserByKey()
 	if err != nil {
-		c.JSON(401, lavina.Response("", "No user match", false))
+		c.JSON(401, lavina.Response("", "No user matching", false))
 		c.Abort()
 		return
 	}
@@ -78,7 +78,7 @@ func AuthenticateUser(c *gin.Context) {
 }
 
 func AuthorizeUser(c *gin.Context) {
-	enforcer := dbCon.GetCasbin
+	enforcer := dbCon.Casbin
 
 	// Load stored policy from database
 	enforcer.LoadPolicy()

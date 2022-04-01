@@ -48,27 +48,21 @@ func startApp() {
 
 	// Set the router as the default one provided by Gin
 	router = gin.Default()
+
+	// Set middlewears
 	router.Use(auth.AuthenticateUser)
 	router.Use(auth.AuthorizeUser)
 	router.Use(ErrorHandler)
 
-	// Process the templates at the start so that they don't have to be loaded
-	// from the disk again. This makes serving HTML pages very fast.
-	//router.LoadHTMLGlob(gin-gorm-boilerplate/internal/templates/*")
-
-	// Define the route for the index page and display the index.html template
-	// To start with, we'll use an inline route handler. Later on, we'll create
-	// standalone functions that will be used as route handlers.
+	// Set routers
 	router.GET("/", Default)
 	network.NetworkRoutes(router)
-
-	// Start serving the application
-	//router.Run()
 
 	srv := &http.Server{
 		Addr:    viper.GetString("server.addr"),
 		Handler: router,
 	}
+
 	llog.Info(fmt.Sprintf("Server is listening to %s", srv.Addr))
 
 	go func() {

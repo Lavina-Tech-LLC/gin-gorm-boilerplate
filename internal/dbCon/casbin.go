@@ -38,10 +38,10 @@ var (
 )
 
 func PopulateCasbinDefaults() {
-	e := GetCasbin
+	e := Casbin
 
-	for _ , rule:= range rules[0].rules{
-		if ! e.HasPolicy(rule){
+	for _, rule := range rules[0].rules {
+		if !e.HasPolicy(rule) {
 			_, err := e.AddPolicy(rule)
 			if err != nil {
 				llog.Error(fmt.Sprintf("Error g2"))
@@ -49,8 +49,8 @@ func PopulateCasbinDefaults() {
 		}
 	}
 
-	for _ , rule:= range rules[1].rules{
-		if ! e.HasNamedGroupingPolicy("g2", rule){
+	for _, rule := range rules[1].rules {
+		if !e.HasNamedGroupingPolicy("g2", rule) {
 			_, err := e.AddNamedGroupingPolicy("g2", rule)
 			if err != nil {
 				llog.Error(fmt.Sprintf("Error g2"))
@@ -58,8 +58,8 @@ func PopulateCasbinDefaults() {
 		}
 	}
 
-	for _ , rule:= range rules[2].rules{
-		if ! e.HasNamedGroupingPolicy("g", rule){
+	for _, rule := range rules[2].rules {
+		if !e.HasNamedGroupingPolicy("g", rule) {
 			_, err := e.AddNamedGroupingPolicy("g", rule)
 			if err != nil {
 				llog.Error(fmt.Sprintf("Error g"))

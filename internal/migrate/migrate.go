@@ -2,7 +2,8 @@ package migrate
 
 import (
 	"gin-gorm-boilerplate/internal/dbCon"
-	"gin-gorm-boilerplate/internal/models"
+	"go/importer"
+	"reflect"
 
 	"github.com/Lavina-Tech-LLC/lavina-utils/llog"
 )
@@ -10,7 +11,12 @@ import (
 // running go run internal/dbCon/migrations/migrate.go
 func Main() {
 	dbCon.Connect()
-	dbCon.GetDB.AutoMigrate(&models.Logs{})
-	dbCon.GetDB.AutoMigrate(&models.Users{})
+	pkg, _ := importer.Default().Import("gin-gorm-boilerplate/internal/models")
+
+	for _, declName := range pkg.Scope().Names() {
+		model := reflect.Zero(reflect.TypeOf(declName))
+		dbCon.DB.AutoMigrate(&model)
+	}
+
 	llog.Info("Success")
 }

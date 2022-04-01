@@ -17,9 +17,6 @@ func Default(c *gin.Context) {
 	if err != nil {
 		llog.Error(err)
 	}
-
-	// You can call this or leave commented to return standart 200 response
-	//c.JSON(200,lavina.Response("","success",true))
 }
 
 func ErrorHandler(c *gin.Context) {

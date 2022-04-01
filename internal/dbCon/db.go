@@ -16,8 +16,8 @@ import (
 var (
 	// GetDB variable for connection DB
 	RunMode    = ""
-	GetDB      *gorm.DB // connection about DB
-	GetCasbin  *casbin.Enforcer
+	DB         *gorm.DB // connection about DB
+	Casbin     *casbin.Enforcer
 	ConfigPath = ""
 	Dm         = false
 )
@@ -53,7 +53,7 @@ func startCasbin() {
 		llog.Error(err)
 	}
 
-	GetCasbin = enforcer
+	Casbin = enforcer
 }
 
 func startGorm() {
@@ -71,7 +71,7 @@ func startGorm() {
 		llog.Error(err)
 	}
 
-	GetDB = db
+	DB = db
 }
 
 func startViper() {

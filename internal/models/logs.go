@@ -7,7 +7,7 @@ type (
 )
 
 func (log *Logs) Log() error {
-	db := dbCon.GetDB
+	db := dbCon.DB
 	err := db.Create(&log).Error
 	return err
 }
